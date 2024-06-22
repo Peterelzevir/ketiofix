@@ -2,24 +2,46 @@ const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
 // Ganti dengan token akses bot Anda
-const token = '6771880075:AAEnI0QXZi2i1TFB4G0BXUEDIDtKf54QEkw';
+const token = '6771880075:AAEJa7bJw9iB47n_LjweVhZ1lKf7k6VZp1I';
 const adminId = 5988451717;
 const channelUsername = '@COLOURGAME_AVIATOR_51GAME';
 
 // Inisialisasi bot
 const bot = new TelegramBot(token, { polling: true });
 
+// Data prediksi BET
+const betData = [
+    "BIG / RED 🔴",
+    "BIG / GREEN 🟢",
+    "SMALL / RED 🔴",
+    "SMALL / GREEN 🟢"
+];
+
 // Pesan yang akan dikirim oleh bot
 const messages = [
     {
         type: 'photo',
         file: 'teks1.jpg',
-        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥\n\n⚡️ लगातार 5 जीतें और पाएं ₹ 20\n⚡️ लगातार 8 जीतें और पाएं ₹100\n⚡️ लगातार 10 जीतें और पाएं ₹500\n⚡️ लगातार 15 जीतें और पाएं ₹1000\n\n*REGISTRATION HERE*:\n🌐 https://51game.app/#/register?invitationCode=63556100074\n\n*CLAIM WIN STRAKE*:\n🦢 https://wa.me/+919794821154 🦢\n\n🟡 गणना में समान अवधि शामिल नहीं है.\n🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.`
+        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥\n\n⚡️ लगातार 5 जीतें और पाएं ₹ 20\n⚡️ लगातार 8 जीतें और पाएं ₹100\n⚡️ लगातार 10 जीतें और पाएं ₹500\n⚡️ लगातार 15 जीतें और पाएं ₹1000\n\n*REGISTRATION HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688\n\n*CLAIM WIN STRAKE*:\n🦢 https://wa.me/+919794821154 🦢\n\n🟡 गणना में समान अवधि शामिल नहीं है.\n🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.`
     },
     {
         type: 'photo',
         file: 'teks2.jpg',
-        caption: (date, time, period) => `‼️ *MY PREDICTION WIN GO 🎱* ‼️\n\n🔉 *WIN GO 1 MINUTE*\n\n*DATE*: ${date}\n*TIME*: ${time}\nPERIODE: ${period}\n\n*LEVEL 3-5 MAINTAIN*\n${getRandomPredictions()}\n\n*REGISTER HERE*:\n🌐 https://51game.app/#/register?invitationCode=63556100074\n\n*🔊 USE THIS PREDICTION WISELY*, Keep a High Balance, Earn High Profits Daily!`
+        caption: (date, time, startPeriod) => {
+            function getRandomBet() {
+                return betData[Math.floor(Math.random() * betData.length)];
+            }
+
+            function generatePeriodsAndBets(startPeriod) {
+                let result = '';
+                for (let i = 0; i < 5; i++) {
+                    result += `*PERIODE*: ${startPeriod + i}\n*BET*: ${getRandomBet()}\n\n`;
+                }
+                return result;
+            }
+
+            return `‼️ *MY PREDICTION WIN GO 🎱* ‼️\n\n🔉 *WIN GO 1 MINUTE*\n\n*DATE*: ${date}\n*TIME*: ${time}\n*LEVEL 1-5 MAINTAIN*\n\n${generatePeriodsAndBets(startPeriod)}*REGISTER HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688\n\n*🔊 USE THIS PREDICTION WISELY*, Keep a High Balance, Earn High Profits Daily!`;
+        }
     },
     {
         type: 'photo',
@@ -37,42 +59,26 @@ const messages = [
 ⚠️VIP Level 2 Bonus: ₹1100
 
 *REGISTER HERE* :
-🌐 https://51game.app/#/register?invitationCode=63556100074
+🌐 https://51game5.com/#/register?invitationCode=84783301688
 
 *CONTACT TO CLAIM THE BONUSES* :
 TELEGRAM: @Mahimawelcomebonus
-WHATSAPP: +919794821154`
+WHATSAPP: +919794821154`,
     },
     {
         type: 'photo',
         file: 'teks4.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
-            return `‼️ *AVIATOR SYSTEM PREDICTION ✈️* ‼️\n\n*DATE*: ${date}\n*TIME*: ${time}\n\nLow Risk 🥰\n\nCASH OUT AT: ${cashOutValue.toFixed(2)}\n\n📢 TAKE PROFIT📈 DON'T BE GREEDY🥰\n\n*REGISTRATION HERE*:\n🌐 https://51game.app/#/register?invitationCode=63556100074`;
+            return `‼️ *AVIATOR SYSTEM PREDICTION ✈️* ‼️\n\n*DATE*: ${date}\n*TIME*: ${time}\n\nLow Risk 🥰\n\n*CASH OUT AT*: ${cashOutValue.toFixed(2)}\n\n📢 TAKE PROFIT📈 DON'T BE GREEDY🥰\n\n*REGISTRATION HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     }
 ];
 
 let stopMessages = false;
-let currentIndex = 0;
+let messageIndex = 0;
 
-function getRandomPredictions() {
-    const predictionData = [
-        "0 SMALL 🔴 🟣",
-        "1 SMALL 🟢",
-        "2 SMALL 🔴",
-        "3 SMALL 🟢",
-        "4 SMALL 🔴",
-        "5 BIG 🟢 🟣",
-        "6 BIG 🔴",
-        "7 BIG 🟢",
-        "8 BIG 🔴",
-        "9 BIG 🟢"
-    ];
-    let shuffled = predictionData.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 5).join('\n');
-}
-
+// Fungsi untuk mengirim pesan
 async function sendMessage() {
     if (stopMessages) return;
 
@@ -80,38 +86,39 @@ async function sendMessage() {
     const date = now.format('YYYY-MM-DD');
     const time = now.format('HH:mm:ss');
 
-    const message = messages[currentIndex];
-    let caption = message.caption;
+    const currentMessage = messages[messageIndex];
 
-    if (typeof caption === 'function') {
-        // If message 2 or 4, calculate period or cashOut accordingly
-        if (currentIndex === 1) {
+    let caption;
+    if (typeof currentMessage.caption === 'function') {
+        if (messageIndex === 1) {
             const baseTime = moment.tz('2024-06-22 13:37:00', 'Asia/Kolkata');
             const diffMinutes = now.diff(baseTime, 'minutes');
-            const period = 20240622010818 + diffMinutes;
-            caption = caption(date, time, period.toString());
-        } else if (currentIndex === 3) {
-            const cashOut = (Math.random() * (2.0 - 1.5) + 1.5).toFixed(2); // Example logic for cashOut
-            caption = caption(date, time, cashOut);
+            const startPeriod = 20240622010818 + diffMinutes + 2;
+            caption = currentMessage.caption(date, time, startPeriod);
+        } else if (messageIndex === 3) {
+            caption = currentMessage.caption(date, time, (Math.random() * 2 + 1.5).toFixed(2)); // Random cash out between 1.50 and 3.50
         }
+    } else {
+        caption = currentMessage.caption;
     }
 
     try {
-        await bot.sendPhoto(channelUsername, message.file, { caption, parse_mode: 'Markdown' });
+        await bot.sendPhoto(channelUsername, currentMessage.file, { caption, parse_mode: 'Markdown' });
     } catch (error) {
         console.error('Error sending message:', error);
     }
 
-    currentIndex = (currentIndex + 1) % messages.length; // Move to the next message index
-    setTimeout(sendMessage, 5 * 60 * 1000); // 5-minute interval
+    messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
+
+    setTimeout(sendMessage, 5 * 60 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
 bot.onText(/\/mulai/, (msg) => {
     if (msg.chat.id === adminId) {
         stopMessages = false;
-        currentIndex = 0; // Reset to the first message
-        sendMessage(); // Start the message loop
+        messageIndex = 0; // Reset indeks pesan
+        sendMessage(); // Memulai pengiriman pesan
     }
 });
 
@@ -124,3 +131,11 @@ bot.onText(/\/stop/, (msg) => {
 
 // Start the bot
 bot.on('polling_error', console.log);
+
+// Log when the bot is active
+console.log('Bot is active!');
+
+// Log bot activities
+bot.on('message', (msg) => {
+    console.log('📈 New message:', msg);
+});
