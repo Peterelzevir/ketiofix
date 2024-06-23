@@ -91,9 +91,9 @@ async function sendMessage() {
     let caption;
     if (typeof currentMessage.caption === 'function') {
         if (messageIndex === 1) {
-            const baseTime = moment.tz('2024-06-22 13:37:00', 'Asia/Kolkata');
+            const baseTime = moment.tz('2024-06-22 16:35:00', 'Asia/Kolkata');
             const diffMinutes = now.diff(baseTime, 'minutes');
-            const startPeriod = 20240622010818 + diffMinutes + 2;
+            const startPeriod = 20240623010996 + diffMinutes + 2;
             caption = currentMessage.caption(date, time, startPeriod);
         } else if (messageIndex === 3) {
             caption = currentMessage.caption(date, time, (Math.random() * 2 + 1.5).toFixed(2)); // Random cash out between 1.50 and 3.50
