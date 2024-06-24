@@ -93,7 +93,7 @@ async function sendMessage() {
         if (messageIndex === 1) {
             // Menghitung periode berdasarkan waktu real-time India
             const totalMinutes = (now.hours() * 60) + now.minutes();
-            const startPeriod = parseInt(now.format('YYYYMMDD')) * 10000 + totalMinutes + 3; // +3 untuk periode awal
+            const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 3; // +3 untuk periode awal
 
             caption = currentMessage.caption(date, time, startPeriod);
         } else if (messageIndex === 3) {
