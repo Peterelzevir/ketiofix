@@ -1,3 +1,6 @@
+//source code by @hiyaok
+//not for resale
+
 const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
@@ -17,35 +20,131 @@ const betData = [
     "SMALL / GREEN 🟢"
 ];
 
+// Fungsi untuk mendapatkan prediksi BET secara acak
+function getRandomBet() {
+    return betData[Math.floor(Math.random() * betData.length)];
+}
+
+// Fungsi untuk menghasilkan periode dan prediksi BET
+function generatePeriodsAndBets(startPeriod, count) {
+    let result = '';
+    for (let i = 0; i < count; i++) {
+        result += `*PERIODE*: ${startPeriod + i}\n*BET*: ${getRandomBet()}\n\n`;
+    }
+    return result;
+}
+
 // Pesan yang akan dikirim oleh bot
 const messages = [
     {
         type: 'photo',
         file: 'teks1.jpg',
-        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥\n\n⚡️ लगातार 5 जीतें और पाएं ₹ 20\n⚡️ लगातार 8 जीतें और पाएं ₹100\n⚡️ लगातार 10 जीतें और पाएं ₹500\n⚡️ लगातार 15 जीतें और पाएं ₹1000\n\n*REGISTRATION HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688\n\n*CLAIM WIN STRAKE*:\n🦢 https://wa.me/+919794821154 🦢\n\n🟡 गणना में समान अवधि शामिल नहीं है.\n🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.`
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
+
+*WIN GO 1 MINUTE (EVERY 20 MIN)*
+
+*DATE*: ${date}
+*TIME*: ${time}
+*LEVEL 1-5 MAINTAIN*
+
+${generatePeriodsAndBets(startPeriod, 5)}*REGISTER HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
+        }
     },
     {
         type: 'photo',
         file: 'teks2.jpg',
-        caption: (date, time, startPeriod) => {
-            function getRandomBet() {
-                return betData[Math.floor(Math.random() * betData.length)];
-            }
+        caption: (date, time, cashOut) => {
+            const cashOutValue = parseFloat(cashOut);
+            return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
-            function generatePeriodsAndBets(startPeriod) {
-                let result = '';
-                for (let i = 0; i < 5; i++) {
-                    result += `*PERIODE*: ${startPeriod + i}\n*BET*: ${getRandomBet()}\n\n`;
-                }
-                return result;
-            }
+*DATE*: ${date}
+*TIME*: ${time}
 
-            return `‼️ *MY PREDICTION WIN GO 🎱* ‼️\n\n🔉 *WIN GO 1 MINUTE*\n\n*DATE*: ${date}\n*TIME*: ${time}\n*LEVEL 1-5 MAINTAIN*\n\n${generatePeriodsAndBets(startPeriod)}*REGISTER HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688\n\n*🔊 USE THIS PREDICTION WISELY*, Keep a High Balance, Earn High Profits Daily!`;
+🥰 *Low Risk* (*EVERY 20 MIN*)✈️
+
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+
+📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
         type: 'photo',
         file: 'teks3.jpg',
+        caption: `*🔥 WINSTREAK BONUS WITH A BET OF ₹10-99 🔥*
+
+⚡️ लगातार 5 जीतें और पाएं ₹ 20
+⚡️ लगातार 8 जीतें और पाएं ₹100
+⚡️ लगातार 10 जीतें और पाएं ₹500
+⚡️ लगातार 15 जीतें और पाएं ₹1000
+
+🟡 गणना में समान अवधि शामिल नहीं है.
+🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688
+
+*CONTACT THE TEAM AT BIO*`
+    },
+    {
+        type: 'photo',
+        file: 'teks4.jpg',
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
+
+*WIN GO 3 MINUTE* (*EVERY 40 MIN*)
+
+*DATE*: ${date}
+*TIME*: ${time}
+*LEVEL 4-7 MAINTAIN*
+
+${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
+        }
+    },
+    {
+        type: 'photo',
+        file: 'teks5.jpg',
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
+
+*WIN GO 1 MINUTE (EVERY 20 MIN)*
+
+*DATE*: ${date}
+*TIME*: ${time}
+*LEVEL 1-5 MAINTAIN*
+
+${generatePeriodsAndBets(startPeriod, 5)}*REGISTER HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
+        }
+    },
+    {
+        type: 'photo',
+        file: 'teks6.jpg',
+        caption: (date, time, cashOut) => {
+            const cashOutValue = parseFloat(cashOut);
+            return `*‼️AVIATOR SYSTEM PREDICTION‼️*
+
+DATE: ${date}
+TIME: ${time}
+
+🥰 *Low Risk* (EVERY 20 MIN)✈️
+
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+
+📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
+        }
+    },
+    {
+        type: 'photo',
+        file: 'teks7.jpg',
         caption: `*THE BEST PLATFORM 51GAME IN INDIA*
 📍Minimum Recharge: ₹100
 📍Minimum Withdraw: ₹110
@@ -61,16 +160,22 @@ const messages = [
 *REGISTER HERE* :
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
-*CONTACT TO CLAIM THE BONUSES* :
-TELEGRAM: @Mahimawelcomebonus
-WHATSAPP: +919794821154`,
+*CONTACT THE TEAM AT BIO*`
     },
     {
         type: 'photo',
-        file: 'teks4.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
-            return `‼️ *AVIATOR SYSTEM PREDICTION ✈️* ‼️\n\n*DATE*: ${date}\n*TIME*: ${time}\n\nLow Risk 🥰\n\n*CASH OUT AT*: ${cashOutValue.toFixed(2)}\n\n📢 TAKE PROFIT📈 DON'T BE GREEDY🥰\n\n*REGISTRATION HERE*:\n🌐 https://51game5.com/#/register?invitationCode=84783301688`;
+        file: 'teks8.jpg',
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
+
+*WIN GO 5 MINUTE (EVERY 40 MIN)*
+
+*DATE*: ${date}
+*TIME*: ${time}
+*LEVEL 4-7 MAINTAIN*
+
+${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     }
 ];
@@ -90,14 +195,13 @@ async function sendMessage() {
 
     let caption;
     if (typeof currentMessage.caption === 'function') {
-        if (messageIndex === 1) {
-            // Menghitung periode berdasarkan waktu real-time India
+        if (messageIndex === 1 || messageIndex === 5) {
+            caption = currentMessage.caption(date, time, (Math.random() * 2 + 4.0).toFixed(2)); // Random cash out between 1.00 and 4.00
+        } else {
             const totalMinutes = (now.hours() * 60) + now.minutes();
-            const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 3; // +3 untuk periode awal
+            const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
 
             caption = currentMessage.caption(date, time, startPeriod);
-        } else if (messageIndex === 3) {
-            caption = currentMessage.caption(date, time, (Math.random() * 2 + 1.5).toFixed(2)); // Random cash out between 1.50 and 3.50
         }
     } else {
         caption = currentMessage.caption;
