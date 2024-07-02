@@ -90,7 +90,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 ❎ *BONUS HAS TURNOVER 1X*
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
     },
     {
         type: 'photo',
@@ -166,7 +166,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *LEVEL 1-5 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
     },
     {
         type: 'photo',
