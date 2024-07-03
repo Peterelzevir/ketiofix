@@ -2,7 +2,6 @@ const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
 const fetch = require('node-fetch');
-const stringSimilarity = require('string-similarity');
 const moment = require('moment');
 const TelegramBot = require('node-telegram-bot-api');
 
@@ -106,6 +105,9 @@ bot.on('message', async (msg) => {
 
     let currentSection = '';
     rl.on('line', (line) => {
+      if (line.trim().length === 0) {
+        return; // Skip empty lines
+      }
       if (line.startsWith('(') && line.endsWith(')')) {
         currentSection = line.slice(1, -1).trim();
         sectionNames.push(currentSection.toLowerCase()); // Lowercase untuk pencocokan case insensitive
@@ -119,48 +121,54 @@ bot.on('message', async (msg) => {
     });
 
     rl.on('close', () => {
-      const matchedSections = sectionNames.filter(name => name.match(new RegExp(namaBagian, 'i')));
+      const matchedSection = sectionNames.find(name => name.toLowerCase() === namaBagian.toLowerCase());
 
-      if (matchedSections.length === 0) {
-        bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
-        fs.unlinkSync(localFilePath); // Cleanup the file
-        return;
-      }
+      if (!matchedSection) {
+        // Jika tidak ada yang cocok, coba mencari kesamaan menggunakan string-similarity
+        const matches = stringSimilarity.findBestMatch(namaBagian.toLowerCase(), sectionNames);
+        const bestMatch = matches.bestMatch;
 
-      const filteredContacts = contacts.filter(contact => matchedSections.includes(contact.section.toLowerCase()));
-
-      if (filteredContacts.length === 0) {
-        bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
-        fs.unlinkSync(localFilePath); // Cleanup the file
-        return;
-      }
-
-      const createVCF = (contacts, fileName) => {
-        let vcfContent = '';
-        contacts.forEach((contact, index) => {
-          vcfContent += `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.section} ${index + 1}\nTEL:${contact.number}\nEND:VCARD\n`;
-        });
-
-        const vcfFilePath = path.join(__dirname, `${fileName}.vcf`);
-        fs.writeFileSync(vcfFilePath, vcfContent);
-        return vcfFilePath;
-      };
-
-      if (contactsPerFile) {
-        let fileCounter = 1;
-        for (let i = 0; i < filteredContacts.length; i += contactsPerFile) {
-          const chunk = filteredContacts.slice(i, i + contactsPerFile);
-          const vcfFilePath = createVCF(chunk, `${namaFileVCF}_${fileCounter}`);
-          bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
-          fileCounter++;
+        if (bestMatch.rating < 0.5) {
+          bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
+          fs.unlinkSync(localFilePath); // Cleanup the file
+          return;
         }
-      } else {
-        const vcfFilePath = createVCF(filteredContacts, namaFileVCF);
-        bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
-      }
 
-      bot.sendMessage(msg.chat.id, 'Process complete.', { reply_to_message_id: msg.message_id });
-      fs.unlinkSync(localFilePath); // Cleanup the file
+        const filteredContacts = contacts.filter(contact => contact.section.toLowerCase() === bestMatch.target.toLowerCase());
+
+        if (filteredContacts.length === 0) {
+          bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
+          fs.unlinkSync(localFilePath); // Cleanup the file
+          return;
+        }
+
+        const createVCF = (contacts, fileName) => {
+          let vcfContent = '';
+          contacts.forEach((contact, index) => {
+            vcfContent += `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.section} ${index + 1}\nTEL:${contact.number}\nEND:VCARD\n`;
+          });
+
+          const vcfFilePath = path.join(__dirname, `${fileName}.vcf`);
+          fs.writeFileSync(vcfFilePath, vcfContent);
+          return vcfFilePath;
+        };
+
+        if (contactsPerFile) {
+          let fileCounter = 1;
+          for (let i = 0; i < filteredContacts.length; i += contactsPerFile) {
+            const chunk = filteredContacts.slice(i, i + contactsPerFile);
+            const vcfFilePath = createVCF(chunk, `${namaFileVCF}_${fileCounter}`);
+            bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
+            fileCounter++;
+          }
+        } else {
+          const vcfFilePath = createVCF(filteredContacts, namaFileVCF);
+          bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
+        }
+
+        bot.sendMessage(msg.chat.id, 'Process complete.', { reply_to_message_id: msg.message_id });
+        fs.unlinkSync(localFilePath); // Cleanup the file
+      }
     });
   }
 });
