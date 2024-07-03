@@ -121,54 +121,62 @@ bot.on('message', async (msg) => {
         });
 
         rl.on('close', () => {
-          const matchedSections = sections.map(section => {
-            const match = stringSimilarity.findBestMatch(section.toLowerCase(), sectionNames);
-            const bestMatchIndex = match.bestMatchIndex;
-            return match.bestMatch.rating >= 0.8 ? sectionNames[bestMatchIndex] : null;
-          });
+  const matchedSections = sections.map(section => {
+    // Filter out empty or non-string section names
+    const validSectionNames = sectionNames.filter(name => typeof name === 'string' && name.trim().length > 0);
+    if (validSectionNames.length === 0) {
+      return null; // Handle the case where no valid section names are found
+    }
 
-          if (matchedSections.includes(null)) {
-            const missingSections = sections.filter((_, index) => matchedSections[index] === null);
-            bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section(s) "${missingSections.join(', ')}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
-            fs.unlinkSync(localFilePath); // Cleanup the file
-            return;
-          }
+    const match = stringSimilarity.findBestMatch(section.toLowerCase(), validSectionNames);
+    const bestMatchIndex = match.bestMatchIndex;
+    return match.bestMatch.rating >= 0.8 ? validSectionNames[bestMatchIndex] : null;
+  });
 
-          const filteredContacts = contacts.filter(contact => matchedSections.includes(contact.section));
+  // Handle cases where matchedSections contains null values (no valid matches)
+  if (matchedSections.includes(null)) {
+    const missingSections = sections.filter((_, index) => matchedSections[index] === null);
+    bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section(s) "${missingSections.join(', ')}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
+    fs.unlinkSync(localFilePath); // Cleanup the file
+    return;
+  }
 
-          if (filteredContacts.length === 0) {
-            bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section(s) "${sections.join('+')}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
-            fs.unlinkSync(localFilePath); // Cleanup the file
-            return;
-          }
+  const filteredContacts = contacts.filter(contact => matchedSections.includes(contact.section));
 
-          const createVCF = (contacts, fileName) => {
-            let vcfContent = '';
-            contacts.forEach((contact, index) => {
-              vcfContent += `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.section} ${index + 1}\nTEL:${contact.number}\nEND:VCARD\n`;
-            });
+  if (filteredContacts.length === 0) {
+    bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section(s) "${sections.join('+')}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
+    fs.unlinkSync(localFilePath); // Cleanup the file
+    return;
+  }
 
-            const vcfFilePath = path.join(__dirname, `${fileName}.vcf`);
-            fs.writeFileSync(vcfFilePath, vcfContent);
-            return vcfFilePath;
-          };
+  const createVCF = (contacts, fileName) => {
+    let vcfContent = '';
+    contacts.forEach((contact, index) => {
+      vcfContent += `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.section} ${index + 1}\nTEL:${contact.number}\nEND:VCARD\n`;
+    });
 
-          if (contactsPerFile) {
-            let fileCounter = 1;
-            for (let i = 0; i < filteredContacts.length; i += contactsPerFile) {
-              const chunk = filteredContacts.slice(i, i + contactsPerFile);
-              const vcfFilePath = createVCF(chunk, `${vcfFileName}_${fileCounter}`);
-              bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
-              fileCounter++;
-            }
-          } else {
-            const vcfFilePath = createVCF(filteredContacts, vcfFileName);
-            bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
-          }
+    const vcfFilePath = path.join(__dirname, `${fileName}.vcf`);
+    fs.writeFileSync(vcfFilePath, vcfContent);
+    return vcfFilePath;
+  };
 
-          bot.sendMessage(msg.chat.id, 'Process complete.', { reply_to_message_id: msg.message_id });
-          fs.unlinkSync(localFilePath); // Cleanup the file
-        });
+  if (contactsPerFile) {
+    let fileCounter = 1;
+    for (let i = 0; i < filteredContacts.length; i += contactsPerFile) {
+      const chunk = filteredContacts.slice(i, i + contactsPerFile);
+      const vcfFilePath = createVCF(chunk, `${vcfFileName}_${fileCounter}`);
+      bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
+      fileCounter++;
+    }
+  } else {
+    const vcfFilePath = createVCF(filteredContacts, vcfFileName);
+    bot.sendDocument(msg.chat.id, vcfFilePath, { reply_to_message_id: msg.message_id });
+  }
+
+  bot.sendMessage(msg.chat.id, 'Process complete.', { reply_to_message_id: msg.message_id });
+  fs.unlinkSync(localFilePath); // Cleanup the file
+});
+
 
       } catch (err) {
         console.error('Error processing file:', err);
