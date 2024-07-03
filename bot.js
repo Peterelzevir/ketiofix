@@ -161,6 +161,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
+        }
     },
     {
         type: 'photo',
@@ -182,7 +183,6 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
         }
     },
-    // Pesan-pesan tambahan
     {
         type: 'photo',
         file: 'IMG_20240703_125850_633.jpg',
@@ -200,7 +200,6 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
 *CONTACT THE TEAM AT BIO*`
-        }
     },
     {
         type: 'photo',
@@ -237,126 +236,40 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *REGISTRATION HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
         }
-    },
-    {
-        type: 'photo',
-        file: 'teks12.jpg',
-        caption: `*51GAME* introducing : *AWARD WINNING LIVE* !!
-
-*MORE HOW TO PARTICIPATE* ⁉️
-
-Simple, make sure you are an ACTIVE and a VIP LEVEL member, make sure to register every week to participate!
-
-✅ *Sign up here*: forms.gle/B1vxDzNR6RiK8V6u9
-
-🎁 *BEST PART IS... Your bonus is will calculated with your VIP LEVEL!* उदाहरण के लिए, जब आप 5,000 जीतते हैं, तो हम आपके वी आई पी स्तर की जांच करेंगे, 
-
-यदि आप वी आई पी स्तर 3 पर हैं, तो बोनस 5000 x 3 = 15000 होगा!
-यदि आप वीआईपी स्तर 5 पर हैं, तो बोनस 5000 x 5 = 25000 होगा!
-
-अभी भाग लें! बोनस इतना अच्छा कभी नहीं रहा! 🎁`
-        }
-    },
-    {
-        type: 'photo',
-        file: 'teks1.jpg',
-        caption:(date, time, startPeriod) => {
-            return `*‼️MY PREDICTION WIN GO‼️*
-
-*WIN GO 1 MINUTE (EVERY 20 MIN)*
-
-*DATE*: ${date}
-*TIME*: ${time}
-*LEVEL 1-5 MAINTAIN*
-
-${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
-        }
-    },
-    {
-        type: 'photo',
-        file: 'teks2.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
-            return `*‼️AVIATOR SYSTEM PREDICTION‼️*
-
-*DATE*: ${date}
-*TIME*: ${time}
-
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
-
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
-
-📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
-
-*REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
-        }
-    },
-    {
-        type: 'photo',
-        file: 'teks15.jpg',
-        caption: `*THE BEST PLATFORM 51GAME IN INDIA*
-📍Minimum Recharge: ₹100
-📍Minimum Withdraw: ₹110
-📍Transaction No Fees
-
-*THE TOTAL BONUS YOU CAN RECEIVE IS ₹2125*
-⚠️Welcome Bonus: ₹20
-⚠️7 Days Bonus: ₹105
-⚠️Weekly Bonus: ₹100
-⚠️Winstreak 3 periods: ₹30
-⚠️VIP Level 1 Bonus: ₹770
-⚠️VIP Level 2 Bonus: ₹1100
-
-*REGISTER HERE* :
-🌐 https://51game5.com/#/register?invitationCode=84783301688
-
-*CONTACT THE TEAM AT BIO*`
-        }
     }
-    // tambahkan pesan lain jika diperlukan
 ];
 
-// Fungsi untuk mengirim pesan dengan delay ke satu chatId tertentu
-function sendMessageWithDelay(chatId, message, delay) {
-    setTimeout(() => {
-        let cashOut = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2); // Menghasilkan cashOut acak antara 1.00 dan 5.90
-        bot.sendPhoto(chatId, message.file, { caption: typeof message.caption === 'function' ? message.caption(date, time, cashOut) : message.caption });
-    }, delay);
-}
-
-// Fungsi untuk mengirim pesan ke semua chatIds dengan delay
-function sendMessagesToAllChannels() {
-    chatIds.forEach((chatId, index) => {
-        messages.forEach((message, messageIndex) => {
-            const delay = (index * messages.length + messageIndex) * 300000; // delay dihitung berdasarkan urutan chatId dan pesan
-            sendMessageWithDelay(chatId, message, delay);
-        });
-    });
-}
-
-// Event listener saat pengguna mengirim perintah /pesan
-bot.onText(/\/pesan/, (msg) => {
-    const chatId = msg.chat.id;
-    // Pengecekan adminId
-    if (chatId === adminId) {
-        sendMessagesToAllChannels();
-        bot.sendMessage(chatId, 'Pesan-pesan telah berhasil dikirimkan ke semua channel.');
-    } else {
-        bot.sendMessage(chatId, 'Maaf, hanya admin yang dapat menggunakan perintah ini.');
+function sendMessageWithDelay(index) {
+    if (index >= messages.length) {
+        return;
     }
-});
 
-// Event listener saat pengguna mengirim perintah /help
-bot.onText(/\/help/, (msg) => {
-    const chatId = msg.chat.id;
-    bot.sendMessage(chatId, 'Kirim /pesan untuk memulai pengiriman pesan ke semua channel.');
-});
+    const now = moment().tz("Asia/Kolkata");
+    const date = now.format('YYYY-MM-DD');
+    const time = now.format('HH:mm:ss');
+    const startPeriod = Math.floor((now.hours() * 60 + now.minutes()) / 3); // Contoh perhitungan untuk startPeriod
 
-// Event listener untuk menangani error
-bot.on('polling_error', (error) => {
-    console.log(error);  // Cetak error jika terjadi
-});
+    const message = messages[index];
+    let caption = '';
+    if (typeof message.caption === 'function') {
+        caption = message.caption(date, time, startPeriod);
+    } else {
+        caption = message.caption;
+    }
 
-console.log('Bot sedang berjalan...');
+    chatIds.forEach(chatId => {
+        bot.sendPhoto(chatId, message.file, { caption: caption, parse_mode: 'Markdown' })
+            .then(() => {
+                console.log(`Message sent to ${chatId}`);
+            })
+            .catch(error => {
+                console.error(`Failed to send message to ${chatId}:`, error);
+            });
+    });
+
+    const nextDelay = 1800000; // 30 menit dalam milidetik
+    setTimeout(() => sendMessageWithDelay(index + 1), nextDelay);
+}
+
+// Mulai mengirim pesan dengan delay
+sendMessageWithDelay(0);
