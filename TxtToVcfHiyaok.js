@@ -4,6 +4,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const TelegramBot = require('node-telegram-bot-api');
+const stringSimilarity = require('string-similarity');
 
 // Replace with your own token
 const token = '7406919687:AAGNLXrAWlNgN1_nz6MWevsBXvSM5klIQBI';
