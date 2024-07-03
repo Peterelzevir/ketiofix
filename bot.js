@@ -246,7 +246,8 @@ function sendMessageWithDelay(index) {
     const now = moment().tz("Asia/Kolkata");
     const date = now.format('YYYY-MM-DD');
     const time = now.format('HH:mm:ss');
-    const startPeriod = Math.floor((now.hours() * 60 + now.minutes()) / 3); // Contoh perhitungan untuk startPeriod
+    const totalMinutes = (now.hours() * 60) + now.minutes();
+    const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
 
     const message = messages[index];
     let caption = '';
