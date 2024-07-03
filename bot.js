@@ -43,7 +43,7 @@ const messages = [
 *LEVEL 1-5 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -63,7 +63,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -84,7 +84,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 ❎ *BONUS HAS TURNOVER 1X*
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
     },
     {
         type: 'photo',
@@ -99,7 +99,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *LEVEL 4-7 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -119,7 +119,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -144,8 +144,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
   🔴 *EVENT ABUSE MAY LEAD TO WARNING, VIP GROUP BAN, AND EVENT EXCLUSION*
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
-        }
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
     },
     {
         type: 'photo',
@@ -160,7 +159,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *LEVEL 1-5 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -180,7 +179,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -199,7 +198,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *REGISTRATION HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
-*CONTACT THE TEAM AT BIO*`
+*CONTACT THE TEAM AT BIO*`;
     },
     {
         type: 'photo',
@@ -214,7 +213,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *LEVEL 1-5 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     },
     {
@@ -234,7 +233,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`;
         }
     }
 ];
@@ -267,7 +266,7 @@ function sendMessageWithDelay(index) {
             });
     });
 
-    const nextDelay = 1800000; // 30 menit dalam milidetik
+    const nextDelay = 300000; // 30 menit dalam milidetik
     setTimeout(() => sendMessageWithDelay(index + 1), nextDelay);
 }
 
