@@ -121,6 +121,12 @@ bot.on('message', async (msg) => {
 
       rl.on('close', () => {
         const matchedSections = sections.map(section => {
+          if (typeof section !== 'string') {
+            throw new Error(`Invalid section: ${section}. Expected a string.`);
+          }
+          if (!Array.isArray(sectionNames) || !sectionNames.every(s => typeof s === 'string')) {
+            throw new Error('Invalid sectionNames array. Expected an array of strings.');
+          }
           const match = stringSimilarity.findBestMatch(section.toLowerCase(), sectionNames);
           const bestMatchIndex = match.bestMatchIndex;
           return match.bestMatch.rating >= 0.8 ? sectionNames[bestMatchIndex] : null;
@@ -206,5 +212,5 @@ bot.onText(/\/hapuspremium (.+)/, (msg, match) => {
   delete premiumUsers[targetUserId];
   savePremiumUsers();
   bot.sendMessage(targetUserId, `Your premium access has been revoked.`);
-  bot.sendMessage(msg.chat.id, `User ${targetUserId}'s premium access has been revoked.`);
+  bot.sendMessage(msg.chat id, `Premium access for user ${targetUserId} has been revoked.`);
 });
