@@ -4,10 +4,10 @@ const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const TelegramBot = require('node-telegram-bot-api');
-const leven = require('leven'); // Tambahkan ini
+const fuzzball = require('fuzzball'); // Tambahkan ini
 
 // Replace with your own token
-const token = '7406919687:AAGNLXrAWlNgN1_nz6MWevsBXvSM5klIQBI';
+const token = '6771880075:AAG33S6nO7RhRIcM3jv0UbOux6qoYSkEnUw';
 const bot = new TelegramBot(token, { polling: true });
 
 // Replace with your own admin ID
@@ -125,13 +125,13 @@ bot.on('message', async (msg) => {
       const matchedSection = sectionNames.find(name => name.toLowerCase() === namaBagian.toLowerCase());
 
       if (!matchedSection) {
-        // Jika tidak ada yang cocok, coba mencari kesamaan menggunakan leven
+        // Jika tidak ada yang cocok, coba mencari kesamaan menggunakan fuzzball
         const closestMatch = sectionNames.reduce((bestMatch, name) => {
-          const distance = leven(namaBagian.toLowerCase(), name.toLowerCase());
-          return distance < bestMatch.distance ? { name, distance } : bestMatch;
-        }, { name: '', distance: Infinity });
+          const ratio = fuzzball.ratio(namaBagian.toLowerCase(), name.toLowerCase());
+          return ratio > bestMatch.ratio ? { name, ratio } : bestMatch;
+        }, { name: '', ratio: 0 });
 
-        if (closestMatch.distance > 5) { // Jika jarak terlalu besar, dianggap tidak cocok
+        if (closestMatch.ratio < 50) { // Jika rasio terlalu kecil, dianggap tidak cocok
           bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
           fs.unlinkSync(localFilePath); // Cleanup the file
           return;
