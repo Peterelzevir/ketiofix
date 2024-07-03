@@ -4,7 +4,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const TelegramBot = require('node-telegram-bot-api');
-const stringSimilarity = require('string-similarity');
+const leven = require('leven'); // Tambahkan ini
 
 // Replace with your own token
 const token = '7406919687:AAGNLXrAWlNgN1_nz6MWevsBXvSM5klIQBI';
@@ -125,17 +125,19 @@ bot.on('message', async (msg) => {
       const matchedSection = sectionNames.find(name => name.toLowerCase() === namaBagian.toLowerCase());
 
       if (!matchedSection) {
-        // Jika tidak ada yang cocok, coba mencari kesamaan menggunakan string-similarity
-        const matches = stringSimilarity.findBestMatch(namaBagian.toLowerCase(), sectionNames);
-        const bestMatch = matches.bestMatch;
+        // Jika tidak ada yang cocok, coba mencari kesamaan menggunakan leven
+        const closestMatch = sectionNames.reduce((bestMatch, name) => {
+          const distance = leven(namaBagian.toLowerCase(), name.toLowerCase());
+          return distance < bestMatch.distance ? { name, distance } : bestMatch;
+        }, { name: '', distance: Infinity });
 
-        if (bestMatch.rating < 0.5) {
+        if (closestMatch.distance > 5) { // Jika jarak terlalu besar, dianggap tidak cocok
           bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
           fs.unlinkSync(localFilePath); // Cleanup the file
           return;
         }
 
-        const filteredContacts = contacts.filter(contact => contact.section.toLowerCase() === bestMatch.target.toLowerCase());
+        const filteredContacts = contacts.filter(contact => contact.section.toLowerCase() === closestMatch.name.toLowerCase());
 
         if (filteredContacts.length === 0) {
           bot.sendMessage(msg.chat.id, `Hello @${msg.from.username}, section "${namaBagian}" not found in file ${msg.document.file_name}.`, { reply_to_message_id: msg.message_id });
