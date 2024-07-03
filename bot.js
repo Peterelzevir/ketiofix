@@ -125,9 +125,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'teks6.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
-            return `*🔵 SHARE THE PRINT IN THE VIP GROUP TO PARTICIPATE*
+        caption: `*🔵 SHARE THE PRINT IN THE VIP GROUP TO PARTICIPATE*
 
 *👑‼️ DAILY ROULETTE ‼️👑*
 
@@ -152,7 +150,8 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'teks7.jpg',
-        caption: `*‼️MY PREDICTION WIN GO‼️*
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
 
 *WIN GO 1 MINUTE (EVERY 20 MIN)*
 
@@ -187,9 +186,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'IMG_20240703_125850_633.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
-            return `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
+        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
 
 ⚡️ लगातार 5 जीतें और पाएं ₹ 20
 ⚡️ लगातार 8 जीतें और पाएं ₹100
@@ -244,8 +241,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'teks12.jpg',
-        caption: (date, time, startPeriod) => {
-            return `*51GAME* introducing : *AWARD WINNING LIVE* !!
+        caption: `*51GAME* introducing : *AWARD WINNING LIVE* !!
 
 *MORE HOW TO PARTICIPATE* ⁉️
 
@@ -264,8 +260,7 @@ Simple, make sure you are an ACTIVE and a VIP LEVEL member, make sure to registe
     {
         type: 'photo',
         file: 'teks1.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+        caption:(date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
 *WIN GO 1 MINUTE (EVERY 20 MIN)*
@@ -281,7 +276,8 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'teks2.jpg',
-        caption: (date, time, startPeriod) => {
+        caption: (date, time, cashOut) => {
+            const cashOutValue = parseFloat(cashOut);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
@@ -300,9 +296,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     {
         type: 'photo',
         file: 'teks15.jpg',
-        caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
-            return `*THE BEST PLATFORM 51GAME IN INDIA*
+        caption: `*THE BEST PLATFORM 51GAME IN INDIA*
 📍Minimum Recharge: ₹100
 📍Minimum Withdraw: ₹110
 📍Transaction No Fees
