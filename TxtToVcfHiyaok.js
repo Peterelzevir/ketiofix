@@ -7,7 +7,7 @@ const stringSimilarity = require('string-similarity');
 const moment = require('moment');
 
 // Replace with your own token
-const token = '6771880075:AAG33S6nO7RhRIcM3jv0UbOux6qoYSkEnUw';
+const token = '7406919687:AAGNLXrAWlNgN1_nz6MWevsBXvSM5klIQBI';
 const bot = new TelegramBot(token, { polling: true });
 
 // Replace with your own admin ID
