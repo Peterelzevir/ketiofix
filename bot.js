@@ -1,12 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
-const token = '6771880075:AAHf8GgNw8te-XTRJ4XWHRsZV4Th_rkbCdg'; // Ganti dengan token bot Anda
-const adminId = 5988451717; // Ganti dengan ID admin bot Anda
-const chatIds = [
-    '@PREDICTION_WINGO_AVIATOR_51GAME' // Ganti dengan username channel atau grup yang diinginkan
-    // tambahkan lebih banyak chatId sesuai kebutuhan
-];
+// Ganti dengan token akses bot Anda
+const token = '6771880075:AAHf8GgNw8te-XTRJ4XWHRsZV4Th_rkbCdg';
+const adminId = 5988451717;
+const channelUsername = '@PREDICTION_WINGO_AVIATOR_51GAME';
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -36,11 +34,11 @@ const messages = [
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 20 MIN)*
+*WIN GO 1 MINUTE (EVERY 10 MIN)*
 
 *DATE*: ${date}
 *TIME*: ${time}
-*LEVEL 1-5 MAINTAIN*
+*LEVEL 4-7 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
@@ -77,11 +75,11 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
      🤑  *Winner wins: ₹3000*
 
 *RULES*:
-❎ *REGISTER NOW tinyurl.com/vip51game*
-❎ *REACH VIP LEVEL 3-10 FOR THE FIRST TIME*
-❎ *MEMBERS MUST REGISTER TO PARTICIPATE ON THE DAY THEY REACH VIP LEVEL*
-❎ *BONUS WILL NOT BE GIVEN IF THE MEMBER VIOLATES REGULATIONS AND ILLEGAL BETTING*
-❎ *BONUS HAS TURNOVER 1X*
+ *REGISTER NOW tinyurl.com/vip51game*
+✅ *REACH VIP LEVEL 3-10 FOR THE FIRST TIME*
+✅ *MEMBERS MUST REGISTER TO PARTICIPATE ON THE DAY THEY REACH VIP LEVEL*
+✅ *BONUS WILL NOT BE GIVEN IF THE MEMBER VIOLATES REGULATIONS AND ILLEGAL BETTING*
+✅ *BONUS HAS TURNOVER 1X*
 
 *REGISTRATION HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
@@ -152,11 +150,11 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 20 MIN)*
+*WIN GO 1 MINUTE (EVERY 10 MIN)*
 
 *DATE*: ${date}
 *TIME*: ${time}
-*LEVEL 1-5 MAINTAIN*
+*LEVEL 4-7 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
@@ -206,11 +204,11 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 20 MIN)*
+*WIN GO 1 MINUTE (EVERY 10 MIN)*
 
 *DATE*: ${date}
 *TIME*: ${time}
-*LEVEL 1-5 MAINTAIN*
+*LEVEL 4-7 MAINTAIN*
 
 ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
@@ -238,38 +236,67 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     }
 ];
 
-function sendMessageWithDelay(index) {
-    if (index >= messages.length) {
-        return;
-    }
+let stopMessages = false;
+let messageIndex = 0;
 
-    const now = moment().tz("Asia/Kolkata");
+// Fungsi untuk mengirim pesan
+async function sendMessage() {
+    if (stopMessages) return;
+
+    const now = moment().tz('Asia/Kolkata');
     const date = now.format('YYYY-MM-DD');
     const time = now.format('HH:mm:ss');
-    const totalMinutes = (now.hours() * 60) + now.minutes();
-    const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
 
-    const message = messages[index];
-    let caption = '';
-    if (typeof message.caption === 'function') {
-        caption = message.caption(date, time, startPeriod);
+    const currentMessage = messages[messageIndex];
+
+    let caption;
+    if (typeof currentMessage.caption === 'function') {
+        if (messageIndex === 1 || messageIndex === 5) {
+            caption = currentMessage.caption(date, time, (Math.random() * 2 + 4.0).toFixed(2)); // Random cash out between 1.00 and 4.00
+        } else {
+            const totalMinutes = (now.hours() * 60) + now.minutes();
+            const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
+
+            caption = currentMessage.caption(date, time, startPeriod);
+        }
     } else {
-        caption = message.caption;
+        caption = currentMessage.caption;
     }
 
-    chatIds.forEach(chatId => {
-        bot.sendPhoto(chatId, message.file, { caption: caption, parse_mode: 'Markdown' })
-            .then(() => {
-                console.log(`Message sent to ${chatId}`);
-            })
-            .catch(error => {
-                console.error(`Failed to send message to ${chatId}:`, error);
-            });
-    });
+    try {
+        await bot.sendPhoto(channelUsername, currentMessage.file, { caption, parse_mode: 'Markdown' });
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
 
-    const nextDelay = 300000; // 30 menit dalam milidetik
-    setTimeout(() => sendMessageWithDelay(index + 1), nextDelay);
+    messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
+
+    setTimeout(sendMessage, 5 * 60 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
 }
 
-// Mulai mengirim pesan dengan delay
-sendMessageWithDelay(0);
+// Command /mulai
+bot.onText(/\/mulai/, (msg) => {
+    if (msg.chat.id === adminId) {
+        stopMessages = false;
+        messageIndex = 0; // Reset indeks pesan
+        sendMessage(); // Memulai pengiriman pesan
+    }
+});
+
+// Command /stop
+bot.onText(/\/stop/, (msg) => {
+    if (msg.chat.id === adminId) {
+        stopMessages = true;
+    }
+});
+
+// Start the bot
+bot.on('polling_error', console.log);
+
+// Log when the bot is active
+console.log('Bot is active!');
+
+// Log bot activities
+bot.on('message', (msg) => {
+    console.log('ЁЯУИ New message:', msg);
+});
