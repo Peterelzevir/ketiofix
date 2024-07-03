@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
-const token = 'YOUR_BOT_TOKEN'; // Ganti dengan token bot Anda
+const token = '6771880075:AAHf8GgNw8te-XTRJ4XWHRsZV4Th_rkbCdg'; // Ganti dengan token bot Anda
 const adminId = 5988451717; // Ganti dengan ID admin bot Anda
 const chatIds = [
     '@PREDICTION_WINGO_AVIATOR_51GAME' // Ganti dengan username channel atau grup yang diinginkan
@@ -186,7 +186,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     // Pesan-pesan tambahan
     {
         type: 'photo',
-        file: 'teks9.jpg',
+        file: 'IMG_20240703_125850_633.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
             return `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
