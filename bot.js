@@ -189,26 +189,20 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         file: 'teks9.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
-            return `*🔵 SHARE THE PRINT IN THE VIP GROUP TO PARTICIPATE*
+            return `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
 
-*👑‼️ DAILY ROULETTE ‼️👑*
+⚡️ लगातार 5 जीतें और पाएं ₹ 20
+⚡️ लगातार 8 जीतें और पाएं ₹100
+⚡️ लगातार 10 जीतें और पाएं ₹500
+⚡️ लगातार 15 जीतें और पाएं ₹1000
 
-  ➡️ *Get a 3-win streak on WINGO*
-  ➡️ *Hit a Big Win (x50) on SLOTS*
-  ➡️ *Achieve a x20 multiplier on AVIATOR*
-
-*Please send your screenshots for each Roulette session and remember to recharge required on the day before Roulette.*
-
-*RULES*:
-  ✅ *Session 10 winners: Valid recharge must be before posting the screenshot until the winner announcement.*
-  ✅ *Session 11 winners: Valid recharge must be after 00:01H.*
-
-  🔴 *REPLY ON THE SAME DAY OTHERWISE IT WILL BE INVALID*
-  🔴 *NON-COMPLIANT MEMBERS WILL NOT BE VALIDATED AS WINNERS*
-  🔴 *EVENT ABUSE MAY LEAD TO WARNING, VIP GROUP BAN, AND EVENT EXCLUSION*
+🟡 गणना में समान अवधि शामिल नहीं है.
+🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688`
+🌐 https://51game5.com/#/register?invitationCode=84783301688
+
+*CONTACT THE TEAM AT BIO*`
         }
     },
     {
