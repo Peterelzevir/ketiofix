@@ -102,7 +102,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
     {
         type: 'photo',
-        file: 'teks2.jpg',
+        file: 'teks5.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
@@ -172,7 +172,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -226,7 +226,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
