@@ -56,7 +56,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -112,7 +112,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -284,7 +284,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -374,8 +374,3 @@ bot.on('polling_error', console.log);
 
 // Log when the bot is active
 console.log('Bot is active!');
-
-// Log bot activities
-bot.on('message', (msg) => {
-    console.log('ЁЯУИ New message:', msg);
-});
