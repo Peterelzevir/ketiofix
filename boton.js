@@ -294,7 +294,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
 {
         type: 'photo',
-        file: 'teks15.jpg',
+        file: 'teks8.jpg',
         caption: `*THE BEST PLATFORM 51GAME IN INDIA*
 📍Minimum Recharge: ₹100
 📍Minimum Withdraw: ₹110
@@ -308,11 +308,11 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 ⚠️VIP Level 1 Bonus: ₹770
 ⚠️VIP Level 2 Bonus: ₹1100
 
-*REGISTER HERE* :
+*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
-*CONTACT THE TEAM AT BIO*`
-     }
+*CONTACT THE TEAM AT BIO*`;
+        }
     }
 ];
 
