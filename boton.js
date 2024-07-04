@@ -233,25 +233,28 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *REGISTRATION HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688`
         }
-    }
-];
+    },
 {
         type: 'photo',
-        file: 'IMG_20240703_125850_633.jpg',
-        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
+        file: 'teks12.jpg',
+        caption: `👑 ‼️ *WEEKLY ROULETTE VIP* ‼️ 👑
+51GAME introducing : AWARD WINNING LIVE !!
 
-⚡️ लगातार 5 जीतें और पाएं ₹ 20
-⚡️ लगातार 8 जीतें और पाएं ₹100
-⚡️ लगातार 10 जीतें और पाएं ₹500
-⚡️ लगातार 15 जीतें और पाएं ₹1000
+*MORE HOW TO PARTICIPATE* ⁉️
 
-🟡 गणना में समान अवधि शामिल नहीं है.
-🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
+Simple, make sure you are an ACTIVE and a VIP LEVEL member, make sure to register every week to participate!
+
+✅ Sign up here: forms.gle/B1vxDzNR6RiK8V6u9
+
+🎁 BEST PART IS... Your bonus is will calculated with your VIP LEVEL! उदाहरण के लिए, जब आप 5,000 जीतते हैं, तो हम आपके वी आई पी स्तर की जांच करेंगे, 
+
+यदि आप वी आई पी स्तर 3 पर हैं, तो बोनस 5000 x 3 = 15000 होगा!
+यदि आप वीआईपी स्तर 5 पर हैं, तो बोनस 5000 x 5 = 25000 होगा!
+
+अभी भाग लें! बोनस इतना अच्छा कभी नहीं रहा! 🎁
 
 *REGISTRATION HERE*:
-🌐 https://51game5.com/#/register?invitationCode=84783301688
-
-*CONTACT THE TEAM AT BIO*`
+🌐 https://51game5.com/#/register?invitationCode=84783301688`
     },
 {
         type: 'photo',
@@ -292,22 +295,24 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 {
         type: 'photo',
         file: 'IMG_20240703_125850_633.jpg',
-        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
+        caption: `*THE BEST PLATFORM 51GAME IN INDIA*
+📍Minimum Recharge: ₹100
+📍Minimum Withdraw: ₹110
+📍Transaction No Fees
 
-⚡️ लगातार 5 जीतें और पाएं ₹ 20
-⚡️ लगातार 8 जीतें और पाएं ₹100
-⚡️ लगातार 10 जीतें और पाएं ₹500
-⚡️ लगातार 15 जीतें और पाएं ₹1000
+*THE TOTAL BONUS YOU CAN RECEIVE IS ₹2125*
+⚠️Welcome Bonus: ₹20
+⚠️7 Days Bonus: ₹105
+⚠️Weekly Bonus: ₹100
+⚠️Winstreak 3 periods: ₹30
+⚠️VIP Level 1 Bonus: ₹770
+⚠️VIP Level 2 Bonus: ₹1100
 
-🟡 गणना में समान अवधि शामिल नहीं है.
-🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
-
-*REGISTRATION HERE*:
+*REGISTER HERE* :
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
 *CONTACT THE TEAM AT BIO*`
     },
-
 
 let stopMessages = false;
 let messageIndex = 0;
