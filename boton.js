@@ -294,7 +294,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
 {
         type: 'photo',
-        file: 'teks8.jpg',
+        file: 'teks15.jpg',
         caption: `*THE BEST PLATFORM 51GAME IN INDIA*
 📍Minimum Recharge: ₹100
 📍Minimum Withdraw: ₹110
