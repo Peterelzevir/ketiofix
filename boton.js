@@ -312,7 +312,9 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
 *CONTACT THE TEAM AT BIO*`
-    },
+     }
+    }
+];
 
 let stopMessages = false;
 let messageIndex = 0;
