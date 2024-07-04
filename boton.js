@@ -86,7 +86,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
     {
         type: 'photo',
-        file: 'teks4.jpg',
+        file: 'teks1.jpg',
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
@@ -102,7 +102,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
     {
         type: 'photo',
-        file: 'teks5.jpg',
+        file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
@@ -146,7 +146,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
     {
         type: 'photo',
-        file: 'teks7.jpg',
+        file: 'teks1.jpg',
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
@@ -162,7 +162,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
     {
         type: 'photo',
-        file: 'teks8.jpg',
+        file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
             const cashOutValue = parseFloat(cashOut);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
@@ -312,8 +312,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 🌐 https://51game5.com/#/register?invitationCode=84783301688
 
 *CONTACT THE TEAM AT BIO*`
-        }
-    }
+    },
 ];
 
 let stopMessages = false;
