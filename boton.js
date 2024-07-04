@@ -235,6 +235,79 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         }
     }
 ];
+{
+        type: 'photo',
+        file: 'IMG_20240703_125850_633.jpg',
+        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
+
+⚡️ लगातार 5 जीतें और पाएं ₹ 20
+⚡️ लगातार 8 जीतें और पाएं ₹100
+⚡️ लगातार 10 जीतें और पाएं ₹500
+⚡️ लगातार 15 जीतें और पाएं ₹1000
+
+🟡 गणना में समान अवधि शामिल नहीं है.
+🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688
+
+*CONTACT THE TEAM AT BIO*`
+    },
+{
+        type: 'photo',
+        file: 'teks1.jpg',
+        caption: (date, time, startPeriod) => {
+            return `*‼️MY PREDICTION WIN GO‼️*
+
+*WIN GO 1 MINUTE (EVERY 10 MIN)*
+
+*DATE*: ${date}
+*TIME*: ${time}
+*LEVEL 4-7 MAINTAIN*
+
+${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`
+        }
+    },
+{
+        type: 'photo',
+        file: 'teks2.jpg',
+        caption: (date, time, cashOut) => {
+            const cashOutValue = parseFloat(cashOut);
+            return `*‼️AVIATOR SYSTEM PREDICTION‼️*
+
+*DATE*: ${date}
+*TIME*: ${time}
+
+🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
+
+📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688`
+        }
+    },
+{
+        type: 'photo',
+        file: 'IMG_20240703_125850_633.jpg',
+        caption: `🔥 *WINSTREAK BONUS WITH A BET OF ₹10-99* 🔥
+
+⚡️ लगातार 5 जीतें और पाएं ₹ 20
+⚡️ लगातार 8 जीतें और पाएं ₹100
+⚡️ लगातार 10 जीतें और पाएं ₹500
+⚡️ लगातार 15 जीतें और पाएं ₹1000
+
+🟡 गणना में समान अवधि शामिल नहीं है.
+🟡 जिस दिन आप जीतें है उसी दिन बोनस का अनुरोध करें.
+
+*REGISTRATION HERE*:
+🌐 https://51game5.com/#/register?invitationCode=84783301688
+
+*CONTACT THE TEAM AT BIO*`
+    },
+
 
 let stopMessages = false;
 let messageIndex = 0;
