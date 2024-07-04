@@ -238,7 +238,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks12.jpg',
         caption: `👑 ‼️ *WEEKLY ROULETTE VIP* ‼️ 👑
-51GAME introducing : AWARD WINNING LIVE !!
+*51GAME* introducing : *AWARD WINNING LIVE* !!
 
 *MORE HOW TO PARTICIPATE* ⁉️
 
@@ -294,7 +294,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
     },
 {
         type: 'photo',
-        file: 'IMG_20240703_125850_633.jpg',
+        file: 'teks15.jpg',
         caption: `*THE BEST PLATFORM 51GAME IN INDIA*
 📍Minimum Recharge: ₹100
 📍Minimum Withdraw: ₹110
