@@ -56,7 +56,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  ${cashOutValue.toFixed(5)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -112,7 +112,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  woi
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -172,7 +172,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  woi
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -226,7 +226,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  ${cashOutValue.toFixed(5)}
+*CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -284,7 +284,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  ${cashOutValue.toFixed(5)}
+*CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -336,6 +336,7 @@ async function sendMessage() {
             const totalMinutes = (now.hours() * 60) + now.minutes();
             const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
 
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             caption = currentMessage.caption(date, time, startPeriod);
         }
     } else {
