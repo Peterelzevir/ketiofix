@@ -4,7 +4,7 @@ const moment = require('moment-timezone');
 // Ganti dengan token akses bot Anda
 const token = '6771880075:AAHf8GgNw8te-XTRJ4XWHRsZV4Th_rkbCdg';
 const adminId = 5988451717;
-const channelUsername = '@PREDICTION_WINGO_AVIATOR_51GAME';
+const channelUsername = '@testingbotjadwal';
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -112,7 +112,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  ${cashOutValue.toFixed(5)}
+*CASH OUT AT*:  woi
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -172,7 +172,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 
 🥰 *Low Risk* (*EVERY 10 MIN*)✈️
 
-*CASH OUT AT*:  ${cashOutValue.toFixed(5)}
+*CASH OUT AT*:  woi
 
 📢 *TAKE PROFIT📈 DON'T BE GREEDY*🥰
 
@@ -350,7 +350,7 @@ async function sendMessage() {
 
     messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
 
-    setTimeout(sendMessage, 5 * 60 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
+    setTimeout(sendMessage, 0 * 6 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
