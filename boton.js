@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
 // Ganti dengan token akses bot Anda
-const token = '6771880075:AAHf8GgNw8te-XTRJ4XWHRsZV4Th_rkbCdg';
+const token = '6771880075:AAGOjZx_dCVAtSa6QyblK0-JYHUp7nUr72w';
 const adminId = 5988451717;
 const channelUsername = '@testingbotjadwal';
 
@@ -48,7 +48,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
@@ -104,7 +104,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks5.jpg',
         caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
@@ -164,7 +164,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
@@ -218,7 +218,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
@@ -276,7 +276,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         type: 'photo',
         file: 'teks2.jpg',
         caption: (date, time, cashOut) => {
-            const cashOutValue = parseFloat(cashOut);
+            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
             return `*‼️AVIATOR SYSTEM PREDICTION‼️*
 
 *DATE*: ${date}
