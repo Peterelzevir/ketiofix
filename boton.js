@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
 // Ganti dengan token akses bot Anda
-const token = '6771880075:AAExFVMnUQFS0yPFZYgx0axkgN36kczFvU8';
+const token = '6771880075:AAH6kSxKqrE6ShsPYTYRkhMgPR1g55K3Brg';
 const adminId = 5988451717;
 const channelUsername = '@PREDICTION_WINGO_AVIATOR_51GAME';
 
