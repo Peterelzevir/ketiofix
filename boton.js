@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const moment = require('moment-timezone');
 
 // Ganti dengan token akses bot Anda
-const token = '6771880075:AAGOjZx_dCVAtSa6QyblK0-JYHUp7nUr72w';
+const token = '6771880075:AAExFVMnUQFS0yPFZYgx0axkgN36kczFvU8';
 const adminId = 5988451717;
 const channelUsername = '@PREDICTION_WINGO_AVIATOR_51GAME';
 
@@ -351,7 +351,7 @@ async function sendMessage() {
 
     messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
 
-    setTimeout(sendMessage, 0 * 20 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
+    setTimeout(sendMessage, 20 * 60 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
