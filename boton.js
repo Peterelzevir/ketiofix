@@ -34,7 +34,7 @@ const messages = [
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 10 MIN)*
+*WIN GO 1 MINUTE *(EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -54,7 +54,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
 
 *CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
@@ -90,7 +90,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE* (*EVERY 10 MIN*)
+*WIN GO 1 MINUTE* (*EVERY 1 HOUR*)
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -110,7 +110,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -150,7 +150,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 10 MIN)*
+*WIN GO 1 MINUTE (EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -170,7 +170,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -204,7 +204,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 10 MIN)*
+*WIN GO 1 MINUTE (EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -224,7 +224,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
 
 *CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
@@ -262,7 +262,7 @@ Simple, make sure you are an ACTIVE and a VIP LEVEL member, make sure to registe
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE (EVERY 10 MIN)*
+*WIN GO 1 MINUTE (EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -282,7 +282,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 10 MIN*)✈️
+🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -351,7 +351,7 @@ async function sendMessage() {
 
     messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
 
-    setTimeout(sendMessage, 0 * 6 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
+    setTimeout(sendMessage, 1 * 00 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
