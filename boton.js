@@ -34,7 +34,7 @@ const messages = [
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE *(EVERY 1 HOUR)*
+*WIN GO 1 MINUTE (EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -54,7 +54,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
+🥰 *Low Risk (EVERY 1 HOUR)*✈️
 
 *CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
