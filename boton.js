@@ -90,7 +90,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
         caption: (date, time, startPeriod) => {
             return `*‼️MY PREDICTION WIN GO‼️*
 
-*WIN GO 1 MINUTE* (*EVERY 1 HOUR*)
+*WIN GO 1 MINUTE (EVERY 1 HOUR)*
 
 *DATE*: ${date}
 *TIME*: ${time}
@@ -110,7 +110,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
+🥰 *Low Risk (EVERY 1 HOUR)*✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -170,7 +170,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
+🥰 *Low Risk (EVERY 1 HOUR)*✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -224,7 +224,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
+🥰 *Low Risk (EVERY 1 HOUR)*✈️
 
 *CASH OUT AT*:  ${cashOutValue.toFixed(2)}
 
@@ -282,7 +282,7 @@ ${generatePeriodsAndBets(startPeriod, 7)}*REGISTER HERE*:
 *DATE*: ${date}
 *TIME*: ${time}
 
-🥰 *Low Risk* (*EVERY 1 HOUR*)✈️
+🥰 *Low Risk (EVERY 1 HOUR)*✈️
 
 *CASH OUT AT*: ${cashOutValue.toFixed(2)}
 
@@ -330,15 +330,9 @@ async function sendMessage() {
 
     let caption;
     if (typeof currentMessage.caption === 'function') {
-        if (messageIndex === 1 || messageIndex === 5) {
-            caption = currentMessage.caption(date, time, (Math.random() * 4.90 + 1.00).toFixed(5)); // Random cash out between 1.00 and 5.90
-        } else {
-            const totalMinutes = (now.hours() * 60) + now.minutes();
-            const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
-
-            const cashOutValue = (Math.random() * (5.90 - 1.00) + 1.00).toFixed(2);
-            caption = currentMessage.caption(date, time, startPeriod);
-        }
+        const totalMinutes = (now.hours() * 60) + now.minutes();
+        const startPeriod = parseInt(now.format('YYYYMMDD01')) * 10000 + totalMinutes + 2; // +2 untuk periode awal
+        caption = currentMessage.caption(date, time, startPeriod);
     } else {
         caption = currentMessage.caption;
     }
@@ -351,7 +345,7 @@ async function sendMessage() {
 
     messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
 
-    setTimeout(sendMessage, 20 * 60 * 1000); // Jeda 5 menit sebelum mengirim pesan berikutnya
+    setTimeout(sendMessage, 20 * 60 * 1000); // Jeda 20 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
