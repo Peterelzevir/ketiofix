@@ -345,7 +345,7 @@ async function sendMessage() {
 
     messageIndex = (messageIndex + 1) % messages.length; // Mengulangi siklus pesan
 
-    setTimeout(sendMessage, 20 * 60 * 1000); // Jeda 20 menit sebelum mengirim pesan berikutnya
+    setTimeout(sendMessage, 0 * 20 * 1000); // Jeda 20 menit sebelum mengirim pesan berikutnya
 }
 
 // Command /mulai
